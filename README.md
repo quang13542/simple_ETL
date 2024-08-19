@@ -1,26 +1,55 @@
-# how to set up
+## How to Set Up
 
-python3 -m venv venv
+1. Create a virtual environment and activate it:
 
-source venv/bin/activate
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-pip install -r requirements.txt
+2. Install the required packages:
 
-export AIRFLOW_HOME=$(pwd)/airflow_home
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-airflow db init
+3. Set up the Airflow home directory:
 
-# Create an admin user
-airflow users create \
-    --username admin \
-    --firstname FIRST_NAME \
-    --lastname LAST_NAME \
-    --role Admin \
-    --email admin@example.com
+    ```bash
+    export AIRFLOW_HOME=$(pwd)/airflow_home
+    ```
 
-mkdir airflow_home/dags
-cp pipeline.py airflow_home/dags
+4. Initialize the Airflow database:
 
-# export AIRFLOW_HOME=$(pwd)/airflow_home on both terminal
-airflow scheduler
-airflow webserver --port 8080
+    ```bash
+    airflow db init
+    ```
+
+5. Create an admin user:
+
+    ```bash
+    airflow users create \
+        --username admin \
+        --firstname FIRST_NAME \
+        --lastname LAST_NAME \
+        --role Admin \
+        --email admin@example.com
+    ```
+
+6. Prepare the Airflow DAGs directory and copy pipeline script:
+
+    ```bash
+    mkdir airflow_home/dags
+    cp pipeline.py airflow_home/dags
+    ```
+
+7. Export `AIRFLOW_HOME` on both terminals and start the Airflow scheduler and webserver:
+
+    ```bash
+    export AIRFLOW_HOME=$(pwd)/airflow_home
+    ```
+
+    ```bash
+    airflow scheduler
+    airflow webserver --port 8080
+    ```
