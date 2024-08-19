@@ -47,9 +47,10 @@
 
     ```bash
     export AIRFLOW_HOME=$(pwd)/airflow_home
+    airflow webserver --port 8081
     ```
 
     ```bash
+    export AIRFLOW_HOME=$(pwd)/airflow_home
     airflow scheduler
-    airflow webserver --port 8080
     ```
